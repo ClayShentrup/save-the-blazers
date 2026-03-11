@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save the Blazers — Demand a Fair Deal for Portland</title>
+<meta property="og:title" content="Save the Blazers — Portland Owns the Moda Center. So Why Are We Paying the Rent?">
+<meta property="og:description" content="We want to keep the Blazers AND get a fair deal. A plain-English guide to the $600M arena deal.">
+<meta property="og:url" content="https://savetheblazers.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --card: #1a1a26;
+  --red: #e63946;
+  --gold: #f4a261;
+  --green: #2a9d8f;
+  --blue: #457b9d;
+  --text: #e8e8ed;
+  --dim: #8888a0;
+  --accent: #e63946;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 50% 40%, rgba(230,57,70,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 30% 70%, rgba(69,123,157,0.06) 0%, transparent 50%);
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-3%, 2%) rotate(2deg); }
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1.1;
+  position: relative;
+  max-width: 14ch;
+}
+
+.hero h1 .highlight {
+  color: var(--red);
+  display: inline;
+}
+
+.hero .subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--dim);
+  margin-top: 1.5rem;
+  max-width: 36ch;
+  position: relative;
+  font-weight: 400;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: bob 2s ease-in-out infinite;
+}
+
+.scroll-hint .arrow {
+  font-size: 1.5rem;
+  animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ── SECTIONS ── */
+section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+
+section.wide {
+  max-width: 960px;
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+p {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+p.dim { color: var(--dim); }
+
+strong { font-weight: 700; color: #fff; }
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* stagger children */
+.stagger > * { transition-delay: calc(var(--i, 0) * 0.12s); }
+
+/* ── ANALOGY CARDS ── */
+.analogy {
+  background: var(--card);
+  border-left: 4px solid var(--gold);
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-radius: 0 12px 12px 0;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.analogy::before {
+  content: '💡';
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  font-size: 1.5rem;
+  background: var(--bg);
+  padding: 0 0.5rem;
+}
+
+.analogy p { margin-bottom: 0.75rem; color: var(--text); }
+.analogy p:last-child { margin-bottom: 0; }
+
+/* ── BIG NUMBER ── */
+.big-number {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.big-number .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+}
+
+.big-number .label {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--dim);
+  margin-top: 0.75rem;
+  max-width: 30ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── COMPARISON BAR ── */
+.compare-bars {
+  margin: 3rem 0;
+}
+
+.bar-row {
+  margin-bottom: 2rem;
+}
+
+.bar-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-track {
+  height: 42px;
+  background: var(--surface);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bar-fill.animated { /* width set by data attribute */ }
+
+.bar-fill.public { background: linear-gradient(90deg, var(--red), #c1121f); }
+.bar-fill.private { background: linear-gradient(90deg, var(--green), #1a7a6d); }
+.bar-fill.none { background: linear-gradient(90deg, #444, #333); }
+
+/* ── DEAL TABLE ── */
+.deal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.deal-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.deal-card:hover {
+  border-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.deal-card.portland {
+  border: 2px solid var(--red);
+  background: rgba(230, 57, 70, 0.08);
+}
+
+.deal-card .city {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.deal-card .detail {
+  font-size: 0.9rem;
+  color: var(--dim);
+}
+
+.deal-card .terms {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.deal-card .tag {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tag.yes { background: rgba(42, 157, 143, 0.2); color: var(--green); }
+.tag.no { background: rgba(230, 57, 70, 0.2); color: var(--red); }
+.tag.private { background: rgba(69, 123, 157, 0.2); color: var(--blue); }
+
+/* ── QUOTE BLOCK ── */
+.dundon-quote {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dundon-quote::before {
+  content: '"';
+  font-family: 'DM Serif Display', serif;
+  font-size: 8rem;
+  color: rgba(255,255,255,0.04);
+  position: absolute;
+  top: -20px;
+  left: 16px;
+  line-height: 1;
+}
+
+.dundon-quote blockquote {
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--text);
+  position: relative;
+}
+
+.dundon-quote .attribution {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--dim);
+  font-style: normal;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(244,162,97,0.08));
+  border: 1px solid rgba(230,57,70,0.25);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.callout h3 { color: #fff; }
+
+/* ── DIVIDER ── */
+.divider {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--dim);
+  font-size: 1.5rem;
+  letter-spacing: 1em;
+}
+
+/* ── COUNTER ── */
+.counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* ── CTA ── */
+.cta-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  margin: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  border: 2px solid var(--dim);
+  color: var(--text);
+}
+
+.cta-btn.secondary:hover {
+  border-color: var(--text);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.08);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--dim);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 640px) {
+  .deal-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 4rem 1.25rem; }
+  .analogy { padding: 1.5rem; }
+  .dundon-quote { padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <h1>We must keep the Blazers <span class="highlight">in Portland.</span></h1>
+  <p class="subtitle">We also deserve a fair deal. Here's how we get both.</p>
+  <div class="scroll-hint">
+    <span>Scroll to learn more</span>
+    <span class="arrow">↓</span>
+  </div>
+</div>
+
+<!-- ═══ THE SETUP ═══ -->
+<section>
+  <div class="reveal">
+    <h2>The Blazers are staying. The arena is getting renovated. Good.</h2>
+    <p>Nobody involved in this conversation wants the Blazers to leave. The team is part of Portland's identity. The Moda Center should be renovated into a world-class facility. <strong>That's not the debate.</strong></p>
+    <p>The debate is about the terms — because right now, Portland is getting the worst arena deal in the country. And it doesn't have to be that way.</p>
+    <p>It starts with a fact most Portlanders don't know.</p>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>Portland owns the Moda Center.</h2>
+    <p>In 2024, the City of Portland <strong>bought the arena for $1.</strong> The land, the building, all of it. Portland owns it outright.</p>
+    <p>The Trail Blazers are the <strong>tenant.</strong> Tom Dundon — the Dallas billionaire buying the team for $4.25 billion — will be <strong>renting space in a building the city owns.</strong></p>
+    <p>Now here's what the current deal asks Portland to do:</p>
+  </div>
+</section>
+
+<div class="big-number reveal-scale">
+  <div class="num">$600M+</div>
+  <div class="label">in public money to renovate a building we own — for a tenant who contributes $0</div>
+</div>
+
+<section>
+  <div class="reveal">
+    <div class="analogy">
+      <p><strong>Imagine you own a house.</strong> You rent it to a tenant who's earning $350 million a year from the property. The house needs a new kitchen. Instead of the tenant paying for it — or even splitting the cost — you pay for the entire renovation. You don't raise the rent. You don't charge for the increased value. The tenant gets a nicer kitchen and all the extra income it generates. You get the bill.</p>
+      <p>That's the Moda Center deal.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ THE TENANT ═══ -->
+<section>
+  <div class="reveal">
+    <h2>Meet the tenant.</h2>
+    <p>Tom Dundon is buying the Blazers for <strong>$4.25 billion.</strong> He previously bought the NHL's Carolina Hurricanes for $425 million. That franchise is now worth <strong>$2.66 billion</strong> — a 6.25x return in seven years.</p>
+    <p>He received $300 million in public arena funding in Raleigh. He captured 100% of the appreciation. Portland is being asked to repeat this at <strong>double the price.</strong></p>
+  </div>
+
+  <div class="dundon-quote reveal">
+    <blockquote>"I didn't think this was a good financial decision when I did it... how much ego I could appease of my own just to have a team."</blockquote>
+    <div class="attribution">— Tom Dundon on buying the Hurricanes (2018 interview)<br>That "ego purchase" turned into a $2.24 billion profit.</div>
+  </div>
+
+  <div class="reveal">
+    <p>Here's what his $4.25 billion Blazers purchase becomes over 20 years:</p>
+  </div>
+</section>
+
+<div class="big-number reveal-scale">
+  <div class="num">$13–29B</div>
+  <div class="label">projected franchise value at 6–10% annual appreciation — even without a single dollar of public money</div>
+</div>
+
+<section>
+  <div class="reveal">
+    <div class="analogy">
+      <p><strong>If you knew a house was worth $1 million</strong> and the seller was willing to take $700K, you wouldn't offer a million. You'd offer $701K. The deal you're willing to accept has nothing to do with what you can afford — it has everything to do with what the other side will walk away from.</p>
+      <p>Dundon would <strong>self-fund this renovation</strong> before walking away from a $4.25 billion asset that appreciates to $13–29 billion. The Warriors and Clippers ownership groups privately funded $1.4 billion and $2 billion arenas respectively. The question isn't whether he <em>can</em> pay. It's whether we'll <em>let him not.</em></p>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ THEY'RE NOT LEAVING ═══ -->
+<section>
+  <div class="reveal">
+    <h2>"But what if the Blazers leave?"</h2>
+    <p>This is the fear driving everything. And the numbers say it's not real.</p>
+  </div>
+
+  <div class="stagger">
+    <div class="reveal" style="--i:0">
+      <div class="analogy">
+        <p>🏛️ <strong>The last NBA relocation attempt</strong> (Sacramento to Seattle, 2013) was rejected by the Board of Governors <strong>22–8.</strong> The NBA does not want teams moving.</p>
+      </div>
+    </div>
+    <div class="reveal" style="--i:1">
+      <div class="analogy">
+        <p>🗺️ <strong>The best destination markets</strong> — Seattle and Las Vegas — are being absorbed by expansion teams. There's nowhere obvious to go.</p>
+      </div>
+    </div>
+    <div class="reveal" style="--i:2">
+      <div class="analogy">
+        <p>💰 <strong>Relocation would cost</strong> hundreds of millions in fees plus $1.5–2+ billion for a new arena. Self-funding the Moda renovation is vastly cheaper.</p>
+      </div>
+    </div>
+    <div class="reveal" style="--i:3">
+      <div class="analogy">
+        <p>📝 <strong>Dundon already accepted</strong> a 20-year lease requirement in SB 1501. He's committed to Portland.</p>
+      </div>
+    </div>
+    <div class="reveal" style="--i:4">
+      <div class="analogy">
+        <p>🧊 <strong>Even Dundon himself said:</strong> "I'm not in a big rush. I just want to make sure we do it right... there's not a deadline where it has to be done in a certain time."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p>The urgency is manufactured. The threat isn't real. The only question is whether Portland negotiates like it knows that.</p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ EVERY OTHER CITY ═══ -->
+<section class="wide">
+  <div class="reveal">
+    <h2>Every other city got a better deal.</h2>
+    <p>Portland is the <strong>only deal in the last decade</strong> that combines 100% public funding with zero private capital and no lease terms. Here's how it stacks up:</p>
+  </div>
+
+  <div class="deal-grid stagger">
+    <div class="deal-card reveal" style="--i:0">
+      <div class="city">Golden State Warriors</div>
+      <div class="detail">Chase Center (2019) · $1.4B</div>
+      <div class="terms"><span class="tag private">100% private</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:1">
+      <div class="city">LA Clippers</div>
+      <div class="detail">Intuit Dome (2024) · $2.0B</div>
+      <div class="terms"><span class="tag private">100% private</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:2">
+      <div class="city">Seattle (NHL)</div>
+      <div class="detail">Climate Pledge Arena (2021) · $930M</div>
+      <div class="terms"><span class="tag private">100% private</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:3">
+      <div class="city">Sacramento Kings</div>
+      <div class="detail">Golden 1 Center (2016) · $535M</div>
+      <div class="terms"><span class="tag yes">52% private</span><span class="tag yes">rent</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:4">
+      <div class="city">Milwaukee Bucks</div>
+      <div class="detail">Fiserv Forum (2018) · $524M</div>
+      <div class="terms"><span class="tag yes">52% private</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:5">
+      <div class="city">Detroit (Pistons/Red Wings)</div>
+      <div class="detail">Little Caesars Arena (2017) · $863M</div>
+      <div class="terms"><span class="tag yes">62% private</span></div>
+    </div>
+    <div class="deal-card reveal" style="--i:6">
+      <div class="city">Raleigh Hurricanes</div>
+      <div class="detail">PNC Arena (2023) · $300M public</div>
+      <div class="terms"><span class="tag yes">rent</span><span class="tag yes">PILOTs</span><span class="tag yes">housing</span></div>
+    </div>
+    <div class="deal-card portland reveal" style="--i:7">
+      <div class="city">Portland Trail Blazers</div>
+      <div class="detail">Moda Center (2026) · $600M+ public</div>
+      <div class="terms"><span class="tag no">$0 private</span><span class="tag no">no rent</span><span class="tag no">no terms</span></div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p>Sacramento — a <em>smaller market</em> that faced an <em>active relocation threat</em> — still required the Kings to put up 52% of the cost. Portland owns its arena outright and faces no credible relocation threat. We should be getting a <em>better</em> deal than Sacramento, not the worst deal in the league.</p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ THE RALEIGH TWIST ═══ -->
+<section>
+  <div class="reveal">
+    <h2>The Raleigh twist.</h2>
+    <p>Here's the part that should make you angry.</p>
+    <p>In 2023, Dundon signed an arena deal in Raleigh for the Carolina Hurricanes. The public body that owned PNC Arena hired <strong>Dan Barrett of CAA Icon</strong> to negotiate on the public's behalf. Barrett secured:</p>
+  </div>
+
+  <div class="stagger">
+    <div class="reveal" style="--i:0"><p>✅ &nbsp;<strong>$4.5 million/year in rent</strong></p></div>
+    <div class="reveal" style="--i:1"><p>✅ &nbsp;<strong>Ground lease payments at 6% of fair market value</strong></p></div>
+    <div class="reveal" style="--i:2"><p>✅ &nbsp;<strong>Payments in lieu of taxes (PILOTs)</strong></p></div>
+    <div class="reveal" style="--i:3"><p>✅ &nbsp;<strong>10% affordable housing requirement</strong></p></div>
+    <div class="reveal" style="--i:4"><p>✅ &nbsp;<strong>$10 million in team-funded improvements</strong></p></div>
+  </div>
+
+  <div class="reveal">
+    <p style="margin-top: 2rem;"><strong>Now Dan Barrett represents the Blazers in Portland.</strong> He's on the other side of the table. He knows exactly what a fair deal looks like — because he built one. And Portland has no one with equivalent authority negotiating for us.</p>
+    <p>Oregon is investing <strong>double</strong> what Raleigh did and receiving <strong>none</strong> of the protections Barrett himself negotiated for the public in North Carolina.</p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ WHAT SHOULD HAPPEN ═══ -->
+<section>
+  <div class="reveal">
+    <h2>So what should Portland do?</h2>
+    <p>Here's the thing: <strong>the deal should happen.</strong> The Blazers should stay. The arena should be renovated. Nobody is arguing otherwise.</p>
+    <p>The question is whether Portland negotiates like a landlord who just spent $600 million improving a building — or like a city that's been scared into writing a blank check.</p>
+  </div>
+
+  <div class="callout reveal-scale">
+    <h3>The principle is simple.</h3>
+    <p style="font-size: 1.3rem; margin-top: 1rem;"><strong>Dundon should receive zero net public subsidy.</strong><br>Every dollar the public puts in should come back through lease terms, concessions, or direct cash payments.</p>
+  </div>
+
+  <div class="reveal">
+    <p>SB 1501 requires the city to commit its own funds before the state's $365 million in bonds can be issued. That state money physically improves Portland's building — that's good for the city. But every dollar the city commits is a <strong>transaction cost</strong> — the price of unlocking the state money — not a gift to a billionaire.</p>
+    <p>The city should commit whatever the minimum is that the state will accept. Attach binding lease conditions. Recover 100% of the city's own contribution through rent, PILOTs, naming rights, revenue sharing, and community benefits.</p>
+    <p>These aren't radical demands. They're what <em>every other comparable deal</em> in the country includes.</p>
+  </div>
+
+  <div class="analogy reveal">
+    <p><strong>Think of it this way.</strong> The state is offering to renovate your rental property for $365 million. But they'll only do it if you also chip in. So you chip in the minimum required. You renovate the building. Then you charge your tenant rent — because that's what landlords do. The tenant keeps most of the increased revenue from the nicer building. You get a fair return on a building you own. Everyone wins.</p>
+    <p>The only version where someone loses is the one where you renovate the building, don't charge rent, and hand the tenant a $600 million upgrade for free. <strong>That's the current deal.</strong></p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ THE LEVERAGE ═══ -->
+<section>
+  <div class="reveal">
+    <h2>Portland holds all the leverage.</h2>
+    <p>Section 5 of SB 1501 lists five conditions before the state can issue a single dollar in bonds. Two of them require <strong>Portland's affirmative participation.</strong></p>
+    <p>No city commitment = no joint authority = no bonds = no deal.</p>
+    <p>Every other party at the table — the state, the county, Dundon — needs Portland to say yes. <strong>That's not weakness. That's the strongest negotiating position anyone at the table holds.</strong></p>
+  </div>
+
+  <div class="analogy reveal">
+    <p><strong>You hold the only key</strong> to a room with $365 million in it. The person asking you to open the door will make billions from what's inside. All you have to do is name your price before you turn the key. Once you open the door, the money is gone and your leverage disappears.</p>
+    <p><strong>Every term you want must be written into the agreement before you sign.</strong></p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ THE SEATTLE MODEL ═══ -->
+<section>
+  <div class="reveal">
+    <h2>170 miles north, Seattle already solved this.</h2>
+    <p>In 2017, Seattle owned an aging arena called KeyArena. Sound familiar? Here's what they did.</p>
+    <p>They put the lease out to competitive bid. Two groups — AEG and Oak View Group — bid against each other. OVG won. The result:</p>
+  </div>
+
+  <div class="stagger">
+    <div class="reveal" style="--i:0"><p>✅ &nbsp;<strong>$1.15 billion renovation — 100% privately funded.</strong> Zero city money. Zero taxpayer risk.</p></div>
+    <div class="reveal" style="--i:1"><p>✅ &nbsp;<strong>City kept ownership.</strong> OVG leases the building.</p></div>
+    <div class="reveal" style="--i:2"><p>✅ &nbsp;<strong>39-year lease.</strong> City collects rent the entire time.</p></div>
+    <div class="reveal" style="--i:3"><p>✅ &nbsp;<strong>All cost overruns absorbed by OVG.</strong> Not the city.</p></div>
+  </div>
+
+  <div class="reveal">
+    <p>The renovated arena — now Climate Pledge Arena — hosts the NHL's Seattle Kraken, the WNBA's Seattle Storm, and is NBA-ready. <strong>Portland owns a nearly identical asset and is doing the exact opposite.</strong></p>
+  </div>
+
+  <div class="analogy reveal">
+    <p><strong>Here's the play Portland isn't making.</strong> The city could lease the Moda Center to any arena management company with the right to sublease to the Blazers. Multiple operators bid. Dundon can bid too — and he's motivated to, because leasing directly from the city is cheaper than paying a middleman's markup.</p>
+    <p>Economists call this a <strong>Vickrey auction</strong> — competitive bidding that forces everyone to reveal their true price. Either Dundon wins by paying what the building is actually worth, or someone else wins and the city collects rent regardless. If a third-party lessee overestimates what Dundon will pay in sublease? <strong>They eat the cost, not the city.</strong> All the risk transfers to the private sector. The city can't lose.</p>
+    <p>And if the city wants to account for the civic value of having the Blazers specifically — not just any tenant — it can offer Dundon a transparent <strong>"city discount"</strong> on the lease. Say, $50 million capitalized. That makes his bid look effectively larger than a competitor's. It puts a real number on what keeping the Blazers is worth to Portland — instead of leaving it as a blank check.</p>
+    <p>Portland doesn't even have to do this. But the fact that it <em>could</em> proves that not charging rent is a choice — a choice to subsidize a billionaire with your money.</p>
+  </div>
+
+  <div class="callout reveal-scale">
+    <h3>Two paths. Very different risks.</h3>
+    <p style="margin-top: 1rem;"><strong>SB 1501 path:</strong> The city commits its own money, enters a joint authority with the state, and then negotiates with <em>both</em> Dundon <em>and</em> the state over how the returns are divided. The state put in $365 million — three times the city's share — and has every incentive to recoup its investment first. Portland might end up subsidizing Dundon <em>and</em> getting outmaneuvered by the state on the split. There's no guarantee Portland comes out ahead.</p>
+    <p style="margin-top: 1rem;"><strong>Competitive lease path:</strong> The city keeps full ownership. No co-ownership dilution. No joint authority politics. The market sets the price. Dundon is incentivized to bid his true valuation to cut out the middleman. The city can't lose — every outcome is good for Portland.</p>
+    <p style="margin-top: 1rem;">The council's message should be: <strong>"We'll do SB 1501 — but only with fair terms. Otherwise, we'll let the market decide."</strong></p>
+  </div>
+</section>
+
+<div class="divider reveal">• • •</div>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-section">
+  <div class="reveal">
+    <h2>Keep the Blazers.<br>Get a fair deal.<br>It's that simple.</h2>
+    <p style="color: var(--dim); margin: 1.5rem 0 2rem;">The Blazers aren't going anywhere — and neither are we. Read the full financial analysis. Contact your council member. Demand fair lease terms on our arena.</p>
+    <a href="https://ripcitynotripoff.com" class="cta-btn">Full Deal Comparison</a>
+    <a href="https://wonk.blog/moda" class="cta-btn secondary">Deep-Dive Analysis</a>
+  </div>
+</div>
+
+<footer>
+  <p>Sources: SB 1501 (B-Engrossed); CNBC NBA Valuations 2026; Sportico; Centennial Authority (Raleigh); City of Seattle / OVG Climate Pledge Arena docs; ripcitynotripoff.com; OPB; Willamette Week; Bradbury, Coates & Humphreys (2023); Tom Dundon interview, WRAL Raleigh, 2018.</p>
+  <p style="margin-top: 0.75rem;">Built by Portlanders who want to keep the Blazers — and get a fair deal. &nbsp;|&nbsp; <a href="https://ripcitynotripoff.com">ripcitynotripoff.com</a> &nbsp;|&nbsp; <a href="https://wonk.blog/moda">wonk.blog/moda</a></p>
+</footer>
+
+<script>
+// Intersection Observer for all reveal elements
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.15,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  observer.observe(el);
+});
+
+// Animated counter for big numbers
+function animateValue(el, start, end, duration, prefix = '', suffix = '') {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    const current = Math.floor(eased * (end - start) + start);
+    el.textContent = prefix + current.toLocaleString() + suffix;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Observe big numbers for counter animation
+const numObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      const text = entry.target.textContent;
+      if (text.includes('$600M')) {
+        animateValue(entry.target, 0, 600, 1500, '$', 'M+');
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.big-number .num').forEach(el => {
+  numObserver.observe(el);
+});
+
+// Bar chart animation
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.bar-fill');
+      fills.forEach(fill => {
+        fill.style.width = fill.dataset.width;
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.compare-bars').forEach(el => {
+  barObserver.observe(el);
+});
+</script>
+
+</body>
+</html>
