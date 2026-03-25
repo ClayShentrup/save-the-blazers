@@ -560,9 +560,22 @@ footer a:hover { text-decoration: underline; }
 
 <footer>
   <p>SaveTheBlazers.com &middot; The Glickman Contract &middot; An independent analysis by Clay Shentrup, Portland, District 3</p>
-  <p style="margin-top: 0.5rem;"><a href="/cdn-cgi/l/email-protection#d0b3a3b8b5bea4a2a5a090b7bdb1b9bcfeb3bfbd"><span class="__cf_email__" data-cfemail="0566766d606b71777075456268646c692b666a68">[email&#160;protected]</span></a> &middot; <a href="https://wonk.blog/moda">wonk.blog/moda</a></p>
+  <p style="margin-top: 0.5rem;"><a href="mailto:cshentrup@gmail.com">cshentrup@gmail.com</a> &middot; <a href="https://wonk.blog/moda">wonk.blog/moda</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
