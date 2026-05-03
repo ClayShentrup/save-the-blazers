@@ -4,13 +4,474 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Moda Center Deal</title>
+<meta property="og:title" content="The Moda Center Deal — Portland Owns the Building. Here Are the Terms We Should Demand.">
+<meta property="og:description" content="$871M in public money, $0 from Dundon. A plain-English guide to what Portland should demand — and what the public records show.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; }
-iframe { display: block; width: 100%; height: 100vh; border: none; }
+:root {
+  --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26;
+  --red: #e63946; --gold: #f4a261; --green: #2a9d8f; --blue: #457b9d;
+  --text: #e8e8ed; --dim: #8888a0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 50% 40%,rgba(230,57,70,.08) 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(69,123,157,.06) 0%,transparent 50%);animation:drift 20s ease-in-out infinite alternate;}
+@keyframes drift{0%{transform:translate(0,0) rotate(0deg);}100%{transform:translate(-3%,2%) rotate(2deg);}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.1;position:relative;max-width:14ch;}
+.hero h1 .hl{color:var(--red);}
+.hero .sub{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--dim);margin-top:1.5rem;max-width:36ch;position:relative;font-weight:400;}
+.hero-nav{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative;}
+.hero-nav a{font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-bottom:1px solid rgba(136,136,160,.3);padding-bottom:2px;transition:color .2s,border-color .2s;}
+.hero-nav a:hover{color:var(--gold);border-color:var(--gold);}
+.scroll-hint{position:absolute;bottom:3rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--dim);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;}
+.scroll-hint .arr{font-size:1.5rem;animation:bob 2s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+/* LAYOUT */
+section{max-width:720px;margin:0 auto;padding:5rem 1.5rem;}
+section+section{border-top:1px solid rgba(255,255,255,.06);}
+
+/* TYPE */
+h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.2;margin-bottom:1.25rem;}
+h3{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,3vw,1.6rem);line-height:1.3;margin:2rem 0 .75rem;color:var(--gold);}
+p{font-size:clamp(1rem,2vw,1.15rem);margin-bottom:1.25rem;color:var(--text);}
+p:last-child{margin-bottom:0;}
+p.dim{color:var(--dim);}
+strong{font-weight:700;color:#fff;}
+a{color:var(--gold);}
+a:hover{color:#fff;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ANALOGY */
+.analogy{background:var(--card);border-left:4px solid var(--gold);padding:1.75rem 1.75rem 1.75rem 2.25rem;border-radius:0 12px 12px 0;margin:2rem 0;position:relative;}
+.analogy::before{content:'💡';position:absolute;top:-12px;left:14px;font-size:1.4rem;background:var(--bg);padding:0 .4rem;}
+.analogy p{margin-bottom:.75rem;}
+.analogy p:last-child{margin-bottom:0;}
+
+/* QUOTE */
+.dq{background:var(--surface);border-radius:16px;padding:2.5rem;margin:2.5rem 0;position:relative;overflow:hidden;}
+.dq::before{content:'"';font-family:'DM Serif Display',serif;font-size:8rem;color:rgba(255,255,255,.04);position:absolute;top:-20px;left:16px;line-height:1;}
+.dq blockquote{font-style:italic;font-size:clamp(1.1rem,2.5vw,1.35rem);line-height:1.6;position:relative;}
+.dq .attr{margin-top:1rem;font-size:.9rem;color:var(--dim);font-style:normal;}
+
+/* CONTRACT TABLE */
+.ct{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.95rem;}
+.ct th{background:rgba(255,255,255,.05);color:var(--dim);text-align:left;padding:8px 12px;font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;}
+.ct td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top;}
+.ct td:first-child{font-weight:600;color:#fff;}
+.ct td:nth-child(2){font-family:'JetBrains Mono',monospace;font-size:.88rem;color:var(--gold);white-space:nowrap;}
+.ct tfoot td{background:rgba(230,57,70,.1);color:#fff;font-weight:700;padding:12px;border-top:1px solid rgba(230,57,70,.3);border-bottom:none;}
+.ct tfoot td:nth-child(2){color:var(--red);font-family:'JetBrains Mono',monospace;}
+
+/* MATH BOX */
+.math{background:var(--surface);border-radius:16px;padding:2rem 2.5rem;margin:2rem 0;border:1px solid rgba(255,255,255,.06);}
+.math .row{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.math .itm{flex:1;min-width:110px;}
+.math .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:.2rem;}
+.math .num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.8rem,5vw,3rem);font-weight:700;line-height:1;}
+.math .num.r{color:var(--red);} .math .num.g{color:var(--green);} .math .num.o{color:var(--gold);}
+.math .sub{font-size:.78rem;color:var(--dim);margin-top:.2rem;}
+.math p{font-size:.9rem;color:var(--dim);margin-top:.5rem;margin-bottom:0;}
+
+/* CALLOUT */
+.callout{background:linear-gradient(135deg,rgba(230,57,70,.1),rgba(244,162,97,.07));border:1px solid rgba(230,57,70,.25);border-radius:12px;padding:1.5rem 2rem;margin:2rem 0;}
+
+/* BLIST */
+.blist{list-style:none;padding:0;margin:1rem 0 1.5rem;}
+.blist li{padding:.75rem 0 .75rem 1.75rem;position:relative;border-bottom:1px solid rgba(255,255,255,.06);font-size:clamp(.98rem,2vw,1.08rem);line-height:1.6;}
+.blist li:first-child{border-top:1px solid rgba(255,255,255,.06);}
+.blist li::before{content:"▸";position:absolute;left:0;color:var(--red);}
+
+/* DEAL CARDS */
+.dgrid{display:grid;grid-template-columns:1fr;gap:1rem;margin:2rem 0;}
+@media(min-width:600px){.dgrid{grid-template-columns:1fr 1fr;}}
+.dc{background:var(--card);border-radius:12px;padding:1.4rem;border:1px solid transparent;transition:border-color .3s,transform .3s;}
+.dc:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px);}
+.dc.pdx{border:2px solid var(--red);background:rgba(230,57,70,.08);}
+.dc .city{font-weight:700;font-size:1rem;margin-bottom:.2rem;}
+.dc .detail{font-size:.88rem;color:var(--dim);}
+.dc .tags{margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap;}
+.tag{font-size:.68rem;padding:2px 9px;border-radius:100px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.tag.yes{background:rgba(42,157,143,.2);color:var(--green);}
+.tag.no{background:rgba(230,57,70,.2);color:var(--red);}
+.tag.partial{background:rgba(244,162,97,.15);color:var(--gold);}
+.tag.priv{background:rgba(69,123,157,.2);color:var(--blue);}
+
+/* BAR CHART */
+.bars{margin:2.5rem 0;}
+.brow{margin-bottom:1.75rem;}
+.blbl{font-size:.88rem;font-weight:600;margin-bottom:.4rem;display:flex;justify-content:space-between;}
+.btrack{height:40px;background:var(--surface);border-radius:6px;overflow:hidden;}
+.bfill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:.8rem;font-weight:700;color:#fff;width:0%;transition:width 1.5s cubic-bezier(.16,1,.3,1);}
+.bfill.pub{background:linear-gradient(90deg,var(--red),#c1121f);}
+.bfill.prv{background:linear-gradient(90deg,var(--green),#1a7a6d);}
+.bfill.mix{background:linear-gradient(90deg,var(--gold),#d4822a);}
+
+/* CHAT */
+.chat-section{background:var(--surface);padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+.chat-section .inner{max-width:720px;margin:0 auto;}
+.chat-section h2{text-align:center;margin-bottom:.5rem;}
+.csub{text-align:center;color:var(--dim);font-size:.92rem;margin-bottom:2rem;}
+.cfine{font-size:.74rem;color:var(--dim);font-style:italic;text-align:center;margin-top:1rem;}
+
+/* DEEP BREAK */
+.deep-break{text-align:center;padding:5rem 1.5rem;background:var(--surface);border-top:3px solid var(--red);border-bottom:1px solid rgba(255,255,255,.06);}
+.deep-break .over{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.deep-break h2{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1rem;}
+.deep-break p{color:var(--dim);max-width:52ch;margin:0 auto;font-size:.95rem;}
+
+/* FINDINGS */
+.finding{max-width:720px;margin:0 auto;padding:4.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.finding:last-child{border-bottom:none;}
+.fnum{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;font-weight:700;}
+
+/* DOC BOX */
+.docbox{background:var(--card);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;}
+.doclbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;font-weight:600;}
+.docq{font-style:italic;font-size:1rem;line-height:1.65;color:var(--text);}
+.docsrc{font-size:.8rem;color:var(--dim);margin-top:.6rem;}
+
+/* CMP */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+@media(max-width:500px){.cmp{grid-template-columns:1fr;}}
+.cmp .col{background:var(--card);border-radius:10px;padding:1.25rem;}
+.cmp .clbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem;font-weight:700;}
+.cmp .ctxt{font-size:.95rem;line-height:1.6;}
+
+/* TIMELINE */
+.tl{margin:1.5rem 0;}
+.tli{padding:.75rem 0 .75rem 1.75rem;border-left:2px solid rgba(255,255,255,.1);margin-left:.5rem;position:relative;margin-bottom:.25rem;}
+.tli::before{content:'';width:9px;height:9px;background:var(--red);border-radius:50%;position:absolute;left:-5.5px;top:14px;}
+.tldate{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.25rem;font-weight:700;}
+.tli p{font-size:.95rem;margin-bottom:0;}
+
+/* KEY QUESTION */
+.kq{background:rgba(244,162,97,.08);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:1.25rem 1.5rem;margin:1.5rem 0;font-style:italic;font-size:.95rem;}
+.kq strong{color:var(--gold);font-style:normal;}
+
+/* CTA */
+.cta-section{text-align:center;padding:6rem 2rem;max-width:720px;margin:0 auto;}
+.cta-btn{display:inline-block;padding:.9rem 2.25rem;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:1rem;border-radius:8px;margin:.4rem;transition:transform .2s,box-shadow .2s;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,57,70,.3);color:#fff;}
+.cta-btn.sec{background:transparent;border:2px solid rgba(255,255,255,.2);color:var(--text);}
+.cta-btn.sec:hover{border-color:var(--text);box-shadow:0 8px 30px rgba(255,255,255,.08);}
+.divider{text-align:center;padding:3rem 0;color:var(--dim);font-size:1.2rem;letter-spacing:.8em;}
+footer{text-align:center;padding:3rem 2rem;color:var(--dim);font-size:.85rem;border-top:1px solid rgba(255,255,255,.06);max-width:720px;margin:0 auto;line-height:1.8;}
+footer a{color:var(--gold);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+@media(max-width:480px){section{padding:4rem 1.25rem;}.finding{padding:3.5rem 1.25rem;}}
 </style>
 </head>
 <body>
-<iframe src="https://claude.ai/public/artifacts/6b395e91-830c-4b40-aed2-4933b8c4e957"></iframe>
+
+<div class="hero" id="top">
+  <h1>The Moda Center <span class="hl">Deal.</span></h1>
+  <p class="sub">$871M in public money. $0 from Dundon. Portland owns the building. We don't have to say yes to these terms.</p>
+  <nav class="hero-nav">
+    <a href="#deal">The Deal</a>
+    <a href="#contract">The Contract</a>
+    <a href="#ask">Ask Questions</a>
+    <a href="#deep">Public Records</a>
+    <a href="https://wonk.blog/moda" target="_blank">Full Analysis</a>
+  </nav>
+  <div class="scroll-hint"><span>Scroll</span><span class="arr">↓</span></div>
+</div>
+
+<section id="deal">
+  <div class="reveal">
+    <h2>The Blazers are staying. The arena is getting renovated. Good.</h2>
+    <p>Nobody in this conversation wants the Blazers to leave. The Moda Center should be renovated. <strong>That's not the debate.</strong></p>
+    <p>The debate is about the terms — because right now, Portland is being offered the worst arena deal in the country. It starts with a fact most Portlanders don't know.</p>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>Portland owns the Moda Center.</h2>
+    <p>In 2024, the City of Portland <strong>bought the arena for $1.</strong> The land, the building, everything. Tom Dundon — the Dallas billionaire buying the team for $4.25 billion — will be renting space in a building the city owns.</p>
+    <div class="analogy">
+      <p>What landlord renovates a tenant's space for free and charges no rent?</p>
+      <p>That's not generosity. That's a negotiating failure.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>The deal on the table.</h2>
+    <ul class="blist">
+      <li><strong>$871 million</strong> in combined public commitments — state $365M, city $405M, county $101M.</li>
+      <li><strong>$0 from Dundon.</strong> Not a dollar of private capital for the base renovation.</li>
+      <li><strong>"Less than $600 million"</strong> — Wilson's own words for the renovation cost. He called $600M a "placeholder number." The public commits $271M more than the stated cost with no explanation.</li>
+      <li><strong>No rent.</strong> Portland owns the building. Nothing charged for the right to operate it.</li>
+      <li><strong>No naming rights sharing.</strong> Moda Center naming rights will sell for $10–20M per year. The proposal returns zero to the public.</li>
+      <li><strong>No PILOT payments.</strong> Nine of twelve comparable NBA deals include them. This one doesn't.</li>
+    </ul>
+    <div class="dq reveal">
+      <blockquote>"Historically, other owners have committed years and put in money… In Portland?"</blockquote>
+      <div class="attr">— Tom Dundon, The Athletic, March 31, 2026. His first day as owner. Asked why he won't contribute money like other owners have.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>The relocation threat isn't real.</h2>
+    <ul class="blist">
+      <li>March 25, 2026: NBA Board of Governors voted to begin formal expansion to <strong>Las Vegas and Seattle</strong> — the only two viable relocation destinations. Both are now off the table.</li>
+      <li>The last attempted NBA relocation was <strong>rejected 22–8.</strong></li>
+      <li>Dundon accepted a <strong>20-year lease with relocation penalties</strong> in SB 1501 itself.</li>
+      <li>Co-owner Sheel Tyle: <strong>"We are committed to Portland, 100 percent. Full stop."</strong></li>
+      <li>Blazers president Hankins, pressed for names of interested cities: "You have cities, not that I can talk to…" He named none. Because both viable cities are in expansion.</li>
+    </ul>
+    <p>Councilor Novick: <em>"I think that's ridiculous. Dundon and his partners just poured $4.2 billion into getting the team. They're not going to leave over a few hundred million dollars. I don't like the idea of being railroaded."</em></p>
+  </div>
+</section>
+
+<section id="contract">
+  <div class="reveal">
+    <h2>The Glickman Contract.</h2>
+    <p>Named for <strong>Dr. Robert Glickman</strong>, the Portland physician who negotiated the original $1 purchase of Moda Center. Two components: fair market rent (what Dundon owes for operating a publicly owned building, regardless of who renovates it) and capital recovery (the public's return on $871M). Together: <strong>$64M/year</strong> — exactly $1M less than Dundon's self-funding cost.</p>
+    <h3>Component A: Fair Market Rent — $15M/year</h3>
+    <table class="ct">
+      <thead><tr><th>Term</th><th>Annual</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Base rent</td><td>$10.0M</td><td>Raleigh pays $4.5M in a market 1/3 Portland's size</td></tr>
+        <tr><td>Payments in lieu of taxes</td><td>$1.5M</td><td>Standard in 9 of 12 comparable NBA deals</td></tr>
+        <tr><td>Community investment fund</td><td>$3.5M</td><td>Rose Quarter &amp; Lower Albina development</td></tr>
+      </tbody>
+      <tfoot><tr><td>Subtotal A</td><td>$15.0M</td><td>Owed regardless of who renovates</td></tr></tfoot>
+    </table>
+    <h3>Component B: Capital Recovery — $49M/year</h3>
+    <table class="ct">
+      <thead><tr><th>Term</th><th>Annual</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Capital recovery payment</td><td>$25.0M</td><td>Fixed annual return on $871M public investment</td></tr>
+        <tr><td>Naming rights (65% to public)</td><td>$10.0M floor</td><td>NBA naming rights: $10–20M/yr gross</td></tr>
+        <tr><td>Non-basketball events (25%)</td><td>$8.0M floor</td><td>~270 events/yr; operator captures 100% today</td></tr>
+        <tr><td>Revenue sharing (8% above $150M)</td><td>~$6.0M</td><td>Captures upside from public-funded renovation</td></tr>
+      </tbody>
+      <tfoot><tr><td>Subtotal B</td><td>$49.0M</td><td>Return on $871M public investment</td></tr></tfoot>
+    </table>
+  </div>
+  <div class="math reveal" style="margin-top:2rem;">
+    <div class="row">
+      <div class="itm"><div class="lbl">Our deal</div><div class="num o">$64M</div><div class="sub">per year to Dundon</div></div>
+      <div class="itm"><div class="lbl">His self-funding cost</div><div class="num r">$65M</div><div class="sub">debt service + rent</div></div>
+      <div class="itm"><div class="lbl">Public net return</div><div class="num g">+$409M</div><div class="sub">over 20 years</div></div>
+    </div>
+    <p>Public invests $871M. Public recovers $1,280M. State: +$172M. City: +$190M. County: +$47M. Dundon saves $20M total vs. self-funding — just barely better than going it alone. He takes the deal.</p>
+  </div>
+  <div class="callout reveal" style="margin-top:2rem;">
+    <p><strong>Andrew Zimbalist</strong> — Robert A. Woods Professor of Economics, Smith College; 24 books on sports economics; NPR commentator; consultant to cities, teams, and leagues — reviewed this analysis: <em style="font-size:1.05rem;">"Definitely seems that Portland is being too concessionary."</em></p>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>How Portland's deal compares.</h2>
+    <p class="dim">The Blazers' own negotiator prepared the market comparables used by the city and legislators — excluding the deals that looked bad for his client.</p>
+    <div class="bars">
+      <div class="brow"><div class="blbl"><span>Golden State Warriors</span><span>100% private — $1.4B</span></div><div class="btrack"><div class="bfill prv" data-width="100%">100% private</div></div></div>
+      <div class="brow"><div class="blbl"><span>Seattle / Climate Pledge Arena</span><span>100% private — $1.15B</span></div><div class="btrack"><div class="bfill prv" data-width="100%">100% private</div></div></div>
+      <div class="brow"><div class="blbl"><span>Sacramento Kings</span><span>~50% public</span></div><div class="btrack"><div class="bfill mix" data-width="50%">~50% public</div></div></div>
+      <div class="brow"><div class="blbl"><span>Milwaukee Bucks</span><span>~50% public</span></div><div class="btrack"><div class="bfill mix" data-width="50%">~50% public</div></div></div>
+      <div class="brow"><div class="blbl"><span>Portland (proposed)</span><span>100% public — $871M</span></div><div class="btrack"><div class="bfill pub" data-width="100%">100% public</div></div></div>
+    </div>
+    <p class="dim">The Blazers' negotiator Dan Barrett was the lead negotiator for the public in both Sacramento and Milwaukee — the deals he excluded from Portland's comparables. He knows what the public can get when properly represented.</p>
+  </div>
+</section>
+
+<section>
+  <div class="reveal">
+    <h2>The mayor keeps making our argument.</h2>
+    <p>At his April 8 press conference, Wilson called Portland the Blazers' "landlord" and Moda Center "a pretty good asset to own." He's right on both counts. <strong>So why isn't the landlord charging rent?</strong></p>
+    <p>He also admitted the renovation cost is invented: <em>"It's less than $600 million. We're just using that as a kind of placeholder number."</em> The public commits $871M based on a figure the mayor himself calls a placeholder.</p>
+    <p>On the city's leverage: <strong>"That's just reality."</strong> It isn't. Portland owns the building, the team cannot relocate, and Dundon's self-funding cost is $65M/year. The city has every lever. It just has to choose to pull them.</p>
+    <div class="callout" style="margin-top:1.5rem;">
+      <p>Read the <a href="https://drive.google.com/file/d/1jlVs8rl3T1F38do1utrjgA9F5NIUaLGL/view" target="_blank">full model resolution (PDF)</a> &nbsp;·&nbsp; <a href="https://wonk.blog/moda" target="_blank">Full policy analysis at wonk.blog/moda</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT -->
+<div class="chat-section" id="ask">
+  <div class="inner">
+    <h2 class="reveal">Questions about this deal?</h2>
+    <p class="csub reveal">An AI trained on the full public record — PRR documents, financial analysis, internal emails, text messages, and comparable deals — is standing by.</p>
+    <div style="text-align:center;padding:1rem 0 1.5rem;" class="reveal">
+      <a href="https://claude.ai/public/artifacts/392f9a94-ccd0-4faf-9548-7b4b61be0c0f" target="_blank" class="cta-btn">Ask the Research Assistant →</a>
+    </div>
+    <p class="cfine reveal">Based on public records and independent analysis. Verify claims against primary sources.</p>
+  </div>
+</div>
+
+<!-- DEEP DIVE -->
+<div class="deep-break" id="deep">
+  <p class="over">You've got the gist. Now we go deeper.</p>
+  <h2 class="reveal">What the Public Records Actually Show</h2>
+  <p class="reveal">The following connects the documentary record — PRR filings, text messages, internal emails, invoices, and calendar invites — to show how this deal was built, who built it, and what questions remain unanswered.</p>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 1</div>
+  <div class="reveal">
+    <h2>The PCEF Money Was Already Spent</h2>
+    <p>The Portland Clean Energy Fund was created by voters to fund climate investments in frontline communities — not a general discretionary fund. When Wilson proposed using $75M of it for Moda Center, internal documents from PRR C443668 show the city already knew otherwise.</p>
+    <div class="docbox">
+      <div class="doclbl">PRR C443668 — Internal city Q&amp;A for reporters, February 2026</div>
+      <div class="docq">"All current and forecasted PCEF funds are allocated through the Climate Investment Plan through June 30, 2029. Because all PCEF resources are already allocated in the current CIP, commitments in the current CIP would need to be modified in order for PCEF funds to support the Moda renovation effort."</div>
+      <div class="docsrc">PCEF balance at start of fiscal year: $739,542,176 — all already committed.</div>
+    </div>
+    <p>Using PCEF for Moda means canceling or deferring existing climate programs — not drawing from surplus. The city knew this while publicly saying PCEF "could potentially" support the renovation. Councilor Clark told constituents the PCEF committee had endorsed Moda; internal records show only an "awareness" site visit occurred. Councilor Novick will not vote for PCEF use — a live obstacle for the city's $405M commitment.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 2</div>
+  <div class="reveal">
+    <h2>The Mayor Used Different Numbers for Different Audiences — on the Same Day</h2>
+    <p>On February 9, 2026, Wilson went to the Oregon Capitol to lobby for SB 1501. PRR C443668 produced the separate talking points prepared for Democratic and Republican legislators:</p>
+    <div class="cmp">
+      <div class="col"><div class="clbl">For Democrats</div><div class="ctxt">City plan of <strong>"over $365M"</strong> — $125M upfront plus $12M/year.</div></div>
+      <div class="col"><div class="clbl">For Republicans</div><div class="ctxt">City plan of <strong>"over $260M"</strong> — $175M upfront plus $18M/year.</div></div>
+    </div>
+    <p>A $105M gap between the two versions — used in the same building on the same day. The public figure ultimately became $405M, a third number different from both. The city was using figures as persuasion tools, not financial facts.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 3</div>
+  <div class="reveal">
+    <h2>Stafford Sports Had No Authorization for Most of Its Work</h2>
+    <p>The city's financial advisor is Stafford Sports, LLC — a City Attorney Consultant Contract that shields all work product behind attorney-client privilege. The public has never seen any of their financial analysis, deal memos, or negotiating recommendations. The contract was scoped in 2021 for a single task: the bridge lease extension, at a task order value of $15,750.</p>
+    <div class="docbox">
+      <div class="doclbl">PRR C454414 — Request for Stafford task orders beyond TO1</div>
+      <div class="docq">Status: Closed — No Applicable Records Available.</div>
+      <div class="docsrc">Yet Part 6 of the Stafford time sheets (670 pages) shows hundreds of thousands of dollars billed for SB 1501 work, the Charlotte/Raleigh trip, and reviewing the bill's draft during the legislative vote — with no formal task order authorizing any of it.</div>
+    </div>
+    <p>Unresolved conflict: Stafford's website lists prior work on "Moda Center (Trail Blazers)." The city hired its counterpart's former consultant, made all findings privileged, paid 0.029% of deal value, and no conflict-of-interest disclosure appears anywhere. Carl Hirsh also flew first class on the Charlotte/Raleigh trip, billed to the city as economy.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 4</div>
+  <div class="reveal">
+    <h2>The Trip Studied Only the Arenas That Proved the Blazers' Point</h2>
+    <p>In December 2025, city staff flew to Charlotte and Raleigh — accompanied by Blazers executives and Stafford's Carl Hirsh, all on the city's dime. They visited only 100% publicly funded arenas. They did not visit Milwaukee, Sacramento, Seattle, or any arena with significant private contribution.</p>
+    <div class="docbox">
+      <div class="doclbl">NC_TRIP_ITINERARY_12-2025_FINAL.pdf — stated business purpose</div>
+      <div class="docq">"Strengthening key relationships prior to closing of the Blazers pending sale… learn about experiences of Raleigh's arena owners working with Tom Dundon's ownership group."</div>
+      <div class="docsrc">Blazers staff were listed as "Confirmed" participants in the original itinerary — not optional add-ons. The city's official PRR response contradicts this directly.</div>
+    </div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 5</div>
+  <div class="reveal">
+    <h2>The Blazers Wrote the Pitch Deck the City Used with Legislators</h2>
+    <p>Dan Barrett (Blazers' negotiator) prepared the financial comparable analysis that legislators relied on. He previously served as the lead negotiator <em>for the public</em> in Sacramento and Milwaukee — deals with ~50% private contributions — both of which he excluded from the Portland comparables.</p>
+    <p>When city staffer Karl Lisle suggested adding Milwaukee and Sacramento, Barrett replied: <em>"As the lead negotiator for the public sector in both Sacramento and Milwaukee, I can say that the market has clearly changed."</em> He used his record of protecting the public in those cities as the reason to exclude those deals from Portland's analysis.</p>
+    <p>On January 15, 2026, Aisling Coghlan (mayor's chief of staff) distributed the Blazers' own "Rip City Runs Deep" advocacy toolkit to legislators — the city circulated the Blazers' marketing materials as independent analysis.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 6</div>
+  <div class="reveal">
+    <h2>Project Mt. Hood: The Secret Weekly Meetings</h2>
+    <p>Beginning November 3, 2025, city officials held weekly Monday meetings under the code name "Project Mt. Hood." PRR C454415 produced the original calendar invite.</p>
+    <div class="docbox">
+      <div class="doclbl">PRR C454415 — Calendar invite, October 22, 2025</div>
+      <div class="docq">Required attendees: Oliveira (city deputy admin), Biery (CFO), Ansary (deputy CoS), Lisle (venues), Dan Jarman (Blazers lobbyist), Natalie King (Blazers SVP), Dewayne Hankins (Blazers president), Dan Barrett (Blazers negotiator), Joth Ricci (private citizen, jothricci@gmail.com). Also included: Governor's office, Multnomah County.</div>
+    </div>
+    <p>Joth Ricci — former Dutch Bros CEO and Rip City Forever founder — attended as a private citizen with no disclosed public role. He forwarded the invite to city officials himself and is listed as a required attendee. The entity seeking $871M was in the room designing the pitch every Monday for months.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 7</div>
+  <div class="reveal">
+    <h2>The Gift Campaign: Suite Tickets, Tours, and a Letter of Support</h2>
+    <p>Blazers lobbyists Ryann Gleason (CFM Advocates) and Dan Jarman (Crosswater Strategies) ran a coordinated access campaign from before the new council was even sworn in.</p>
+    <div class="tl">
+      <div class="tli"><div class="tldate">November 2024</div><p>Jarman obtained OGEC Advice No. 24-537I — pre-authorizing suite tickets before inauguration. OGEC found pre-inauguration electeds aren't "public officials" under ORS Ch. 244. The Blazers timed the event to exploit this window.</p></div>
+      <div class="tli"><div class="tldate">January 2025</div><p>AAPI Night — Koyama Lane and Kanal invited with complimentary suite tickets.</p></div>
+      <div class="tli"><div class="tldate">March 2025 — Women's History Night</div><p>Suite invitations to city councilors, Oregon state legislators (including Drazan, Sollman, Pham, others), BOLI Commissioner Christina Stephenson, and Multnomah County Commissioner.</p></div>
+      <div class="tli"><div class="tldate">March 2025 — Child ticket dispute</div><p>Pirtle-Guiney's office asked to bring her daughter free. City attorney: <em>"While state law allows acceptance of the gift of entertainment for a relative, city administrative rules do not."</em> Pirtle-Guiney's staff asked to "bypass the attorney check-in." She paid $120 for her daughter's ticket.</p></div>
+      <div class="tli"><div class="tldate">July 2025</div><p>Jarman separately invited Wilson and councilors Pirtle-Guiney, Ryan, and Kanal to a private tour-and-lunch at Moda Center, to brief them on ECOnorthwest's economic impact study — during the months before the council vote.</p></div>
+      <div class="tli"><div class="tldate">February 2026</div><p>Natalie King (Blazers SVP) thanked Pirtle-Guiney specifically for her letter of support for SB 1501, then requested a follow-up meeting to discuss next steps.</p></div>
+    </div>
+    <div class="kq"><strong>Outstanding question:</strong> Were all gifts from the Blazers to Portland officials properly disclosed on required ethics filings? No OGEC disclosure filings for this campaign have appeared in any public records response to date.</div>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 8</div>
+  <div class="reveal">
+    <h2>The Threats</h2>
+    <p>Between February and March 2026, Blazers lobbyists told at least four Portland city council members their political careers would suffer if the team left Portland — delivered privately, never in public testimony.</p>
+    <div class="docbox">
+      <div class="doclbl">PRR C454690 — Text messages, Councilor Koyama Lane, March 2026</div>
+      <div class="docq">"Lobbyists for the Portland Trail Blazers have made it clear that elected officials will be blamed if the team leaves Portland."</div>
+    </div>
+    <p>These are the same lobbyists simultaneously running the suite ticket access campaign above. Gifts that create access and goodwill, followed by private threats when a vote approaches — a textbook influence operation.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Finding 9</div>
+  <div class="reveal">
+    <h2>Who Is Tom Dundon?</h2>
+    <p>On March 25, 2026, ProPublica and OPB published internal emails showing Dundon, as CEO of Santander Consumer USA, personally ordered the company to stop requiring proof of income on car loans in 2013. His chief risk officer flagged potential federal law violations in writing. Dundon proceeded.</p>
+    <p>Oregon's attorney general called the practices "predatory and harmful." Thirty-three states settled for $550M. Dundon left with a $700M separation package — used to buy the NHL's Carolina Hurricanes and now the Trail Blazers.</p>
+    <p>Oregon AG Dan Rayfield is now separately investigating Exeter Finance — another subprime auto lender where Dundon is chairman, staffed with former Santander executives involved in the original practices.</p>
+    <p>The Glickman Contract doesn't change whether the deal happens. It changes whether Portland gets paid for it.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="fnum">Outstanding Questions</div>
+  <div class="reveal">
+    <h2>What We Still Don't Know</h2>
+    <ul class="blist">
+      <li>What does Stafford Sports' financial analysis actually say? All work product is privileged. The public has committed $871M based on analysis it has never seen.</li>
+      <li>What is the real renovation cost? The $271M gap between the stated cost and public commitment has never been explained.</li>
+      <li>Were OGEC disclosures filed for the Blazers' gift campaign? No filings have appeared in any PRR response.</li>
+      <li>What task order authorized Stafford's SB 1501 work? The city says no additional task orders exist, yet the time sheets show years of billable work.</li>
+      <li>What are the actual lease terms being proposed? The city has committed $405M but the lease document — which determines what Portland receives — has not been made public.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="reveal">
+    <h2>Keep the Blazers.<br>Get a fair deal.<br>It's that simple.</h2>
+    <p style="color:var(--dim);margin:1.5rem 0 2rem;">The Blazers aren't going anywhere. Read the full financial analysis. Contact your council member. Demand binding lease terms before the city enters the joint authority.</p>
+    <a href="https://wonk.blog/moda" class="cta-btn" target="_blank">Full Financial Analysis</a>
+    <a href="https://drive.google.com/file/d/1jlVs8rl3T1F38do1utrjgA9F5NIUaLGL/view" class="cta-btn sec" target="_blank">Model Resolution (PDF)</a>
+  </div>
+</div>
+
+<footer>
+  <p>SaveTheBlazers.com · The Moda Center Deal · An independent analysis by Clay Shentrup, Portland, District 3</p>
+  <p style="margin-top:.5rem;"><a href="mailto:cshentrup@gmail.com">cshentrup@gmail.com</a> &nbsp;·&nbsp; <a href="https://wonk.blog/moda">wonk.blog/moda</a> &nbsp;·&nbsp; <a href="https://drive.google.com/file/d/1zz-UNHUPtnR8YoaOxCD4SCbj9Q8C7fnb/view">Stafford Contract (PRR C449379)</a> &nbsp;·&nbsp; <a href="https://drive.google.com/file/d/1nWrpqtZog15uYUA19qh2P6sWVRApZ8ji/view">KGW Records (490 pages)</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const barObs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.querySelectorAll('.bfill').forEach(f => f.style.width=f.dataset.width); }), {threshold:.3});
+document.querySelectorAll('.bars').forEach(el => barObs.observe(el));
+</script>
 </body>
 </html>
